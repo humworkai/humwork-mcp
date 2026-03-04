@@ -1,0 +1,9 @@
+{
+  "name": "humwork",
+  "version": "1.1.0",
+  "description": "Connect to human experts when stuck on coding problems",
+  "author": { "name": "Humwork", "url": "https://humwork.ai" },
+  "homepage": "https://humwork.ai",
+  "license": "MIT",
+  "keywords": ["experts", "help", "debugging", "consulting"]
+}

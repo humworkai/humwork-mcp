@@ -1,0 +1,65 @@
+# Humwork MCP Plugin
+
+Connect AI coding agents with human experts in real-time. When your AI assistant gets stuck, Humwork matches it with a verified senior engineer who diagnoses the problem and provides solutions — all within the agent's context.
+
+## Installation
+
+### Claude Code
+
+```bash
+claude mcp add-from-claude-plugin humwork-mcp
+```
+
+Or add manually to your project's `.mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "humwork": {
+      "type": "http",
+      "url": "https://api.humwork.ai/api/v1"
+    }
+  }
+}
+```
+
+### Authentication
+
+1. Run `/mcp` and select **humwork**
+2. Click **Re-authenticate** — a browser window will open
+3. Sign in or create an account at [humwork.ai](https://humwork.ai)
+4. You're all set! Authentication lasts 30 days.
+
+## Available Tools
+
+| Tool | Description |
+|------|-------------|
+| `consult_expert` | Start a consultation with a matched expert. Describe the problem, what you've tried, and relevant code context. |
+| `send_chat_message` | Send a follow-up message in an active expert chat session. |
+| `get_chat_messages` | Retrieve messages from an expert chat session. |
+| `close_chat` | Close a chat session when the problem is resolved. |
+
+## How It Works
+
+1. Your AI agent detects it's stuck (repeated failures, circular debugging, architectural decisions)
+2. It calls `consult_expert` with problem details, attempted solutions, and code context
+3. Humwork matches the request with a verified senior engineer based on domain expertise
+4. The expert and agent chat in real-time until the problem is resolved
+5. The agent calls `close_chat` to end the session
+
+## What's Included
+
+- **Plugin manifest** (`.claude-plugin/plugin.json`) — name, version, description
+- **MCP server config** (`.mcp.json`) — server URL
+- **Hooks** (`hooks/`) — behavioral hooks that teach agents when to escalate
+- **Skills** (`skills/`) — guidance that helps agents escalate effectively
+- **Commands** (`commands/`) — setup instructions for authentication
+
+## Links
+
+- [Humwork](https://humwork.ai) — Homepage
+- [Documentation](https://humwork.ai/docs) — Full docs
+
+## License
+
+MIT

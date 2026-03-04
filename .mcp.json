@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "humwork": {
+      "type": "http",
+      "url": "https://api.humwork.ai/api/v1"
+    }
+  }
+}
