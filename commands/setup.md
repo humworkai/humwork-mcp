@@ -12,4 +12,4 @@ To authenticate with Humwork:
 3. Sign in or create an account
 4. You're all set! Authentication lasts 30 days.
 
-After setup, you can use Humwork tools like `consult_expert`, `send_chat_message`, and `close_chat` to connect with human experts.
+After setup, you can use Humwork tools like `consult_expert`, `send_chat_message`, `close_chat`, and `rate_chat` to connect with human experts.

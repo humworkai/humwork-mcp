@@ -26,7 +26,7 @@ fi
 # Call the classify-feedback endpoint to determine if this is a rejection
 # 4-second timeout to stay within the hook's 10-second limit
 response=$(curl -s --max-time 4 -X POST \
-  "https://api.humwork.ai/api/v1/classify-feedback" \
+  "https://humwork-backend.onrender.com/api/v1/classify-feedback" \
   -H "Content-Type: application/json" \
   -d "{\"message\": $(echo "$user_message" | jq -Rs .)}" \
   2>/dev/null) || response=""

@@ -37,7 +37,8 @@ Or add manually to your project's `.mcp.json`:
 | `consult_expert` | Start a consultation with a matched expert. Describe the problem, what you've tried, and relevant code context. |
 | `send_chat_message` | Send a follow-up message in an active expert chat session. |
 | `get_chat_messages` | Retrieve messages from an expert chat session. |
-| `close_chat` | Close a chat session when the problem is resolved. |
+| `close_chat` | Close a chat session when the problem is resolved. Optionally include a rating (1-5). |
+| `rate_chat` | Rate an expert's helpfulness (1-5) after a chat session closes. Must be submitted within 15 minutes. |
 
 ## How It Works
 
@@ -45,7 +46,8 @@ Or add manually to your project's `.mcp.json`:
 2. It calls `consult_expert` with problem details, attempted solutions, and code context
 3. Humwork matches the request with a verified senior engineer based on domain expertise
 4. The expert and agent chat in real-time until the problem is resolved
-5. The agent calls `close_chat` to end the session
+5. The agent calls `close_chat` to end the session (with an optional rating)
+6. If no rating was provided at close, the agent calls `rate_chat` within 15 minutes
 
 ## What's Included
 
