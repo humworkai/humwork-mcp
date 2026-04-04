@@ -2,6 +2,6 @@
   "name": "humwork-mcp",
   "version": "1.1.1",
   "private": false,
-  "description": "Humwork MCP plugin - connect AI coding agents with human experts",
+  "description": "Humwork MCP plugin - connect AI agents with human experts",
   "license": "MIT"
 }

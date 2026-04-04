@@ -5,10 +5,10 @@
     {
       "name": "humwork",
       "source": "./humwork",
-      "description": "Connect to human experts when stuck on coding problems",
+      "description": "Connect to human experts when stuck on problems",
       "version": "1.1.1",
       "category": "integrations",
-      "keywords": ["experts", "help", "consulting"]
+      "keywords": ["experts", "help", "consulting", "engineering", "architecture"]
     }
   ]
 }

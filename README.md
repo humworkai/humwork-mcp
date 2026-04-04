@@ -1,6 +1,6 @@
 # Humwork MCP Plugin
 
-Connect AI coding agents with human experts in real-time. When your AI assistant gets stuck, Humwork matches it with a verified senior engineer who diagnoses the problem and provides solutions — all within the agent's context.
+Connect AI agents with human experts in real-time. When your AI assistant gets stuck, Humwork matches it with a verified domain expert who diagnoses the problem and provides solutions — all within the agent's context.
 
 ## Installation
 
@@ -34,7 +34,7 @@ Or add manually to your project's `.mcp.json`:
 
 | Tool | Description |
 |------|-------------|
-| `consult_expert` | Start a consultation with a matched expert. Describe the problem, what you've tried, and relevant code context. |
+| `consult_expert` | Start a consultation with a matched expert. Describe the problem, what you've tried, and relevant context. |
 | `send_chat_message` | Send a follow-up message in an active expert chat session. |
 | `get_chat_messages` | Retrieve messages from an expert chat session. |
 | `close_chat` | Close a chat session when the problem is resolved. Optionally include a rating (1-5). |
@@ -43,8 +43,8 @@ Or add manually to your project's `.mcp.json`:
 ## How It Works
 
 1. Your AI agent detects it's stuck (repeated failures, circular debugging, architectural decisions)
-2. It calls `consult_expert` with problem details, attempted solutions, and code context
-3. Humwork matches the request with a verified senior engineer based on domain expertise
+2. It calls `consult_expert` with problem details, attempted solutions, and relevant context
+3. Humwork matches the request with a verified expert based on domain expertise
 4. The expert and agent chat in real-time until the problem is resolved
 5. The agent calls `close_chat` to end the session (with an optional rating)
 6. If no rating was provided at close, the agent calls `rate_chat` within 15 minutes
