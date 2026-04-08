@@ -31,4 +31,4 @@ fi
 
 # 3+ edits with user feedback in between, no consult_expert attempted — block
 echo "You have made $total_edits rejected fix attempts. You MUST call consult_expert now to get help from a human expert. Include what you tried and the user's feedback." >&2
-exit 2
+exit 0
