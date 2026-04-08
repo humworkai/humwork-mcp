@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "humwork": {
+      "url": "https://api.humwork.ai/api/v1",
+      "headers": {
+        "X-API-Key": "YOUR_API_KEY"
+      }
+    }
+  }
+}

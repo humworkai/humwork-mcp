@@ -7,7 +7,7 @@ Connect AI agents with human experts in real-time. When your AI assistant gets s
 ### Claude Code
 
 ```bash
-claude mcp add-from-claude-plugin humwork-mcp
+claude mcp add --transport http humwork https://api.humwork.ai/api/v1
 ```
 
 Or add manually to your project's `.mcp.json`:
@@ -23,12 +23,87 @@ Or add manually to your project's `.mcp.json`:
 }
 ```
 
-### Authentication
+**Authentication:** Run `/mcp`, select **humwork**, click **Re-authenticate**, and sign in at [humwork.ai](https://humwork.ai). Auth lasts 30 days.
 
-1. Run `/mcp` and select **humwork**
-2. Click **Re-authenticate** — a browser window will open
-3. Sign in or create an account at [humwork.ai](https://humwork.ai)
-4. You're all set! Authentication lasts 30 days.
+---
+
+### Cursor
+
+Add to your project's `.cursor/mcp.json` (or global `~/.cursor/mcp.json`):
+
+```json
+{
+  "mcpServers": {
+    "humwork": {
+      "url": "https://api.humwork.ai/api/v1",
+      "headers": {
+        "X-API-Key": "YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+Or: **Settings** (Cmd+Shift+J) → **MCP** → **Add new MCP Server** → paste the config above.
+
+Get your API key from your [Humwork dashboard](https://humwork.ai/dashboard).
+
+---
+
+### OpenAI Codex CLI
+
+Add to `~/.codex/config.toml` (or `.codex/config.toml` in your project):
+
+```toml
+[mcp_servers.humwork]
+type = "http"
+url = "https://api.humwork.ai/api/v1"
+
+[mcp_servers.humwork.http_headers]
+X-API-Key = "YOUR_API_KEY"
+```
+
+Get your API key from your [Humwork dashboard](https://humwork.ai/dashboard).
+
+---
+
+### ChatGPT
+
+1. In ChatGPT, go to **Explore GPTs** or the **Plugin Store**
+2. Search for **Humwork** and click **Install**
+3. Authorize with your Humwork account
+
+---
+
+### Windsurf
+
+Add the MCP server in Windsurf settings:
+
+```json
+{
+  "mcpServers": {
+    "humwork": {
+      "url": "https://api.humwork.ai/api/v1",
+      "headers": {
+        "X-API-Key": "YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+Or: **Settings** → **MCP / Plugins** → **Add MCP Server** → paste the config above.
+
+Get your API key from your [Humwork dashboard](https://humwork.ai/dashboard).
+
+---
+
+### Lovable
+
+1. Open **Settings** → **Connectors** → **Personal connectors**
+2. Click **New MCP server**
+3. Name: `humwork`, Server URL: `https://api.humwork.ai/api/v1`
+4. Authenticate with your Humwork account when prompted
 
 ## Available Tools
 
@@ -53,6 +128,7 @@ Or add manually to your project's `.mcp.json`:
 
 - **Plugin manifest** (`.claude-plugin/plugin.json`) — name, version, description
 - **MCP server config** (`.mcp.json`) — server URL
+- **Platform configs** (`configs/`) — ready-to-use configs for Cursor, Codex, Windsurf, and Lovable
 - **Hooks** (`hooks/`) — behavioral hooks that teach agents when to escalate
 - **Skills** (`skills/`) — guidance that helps agents escalate effectively
 - **Commands** (`commands/`) — setup instructions for authentication

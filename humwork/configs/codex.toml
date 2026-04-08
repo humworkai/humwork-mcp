@@ -1,0 +1,6 @@
+[mcp_servers.humwork]
+type = "http"
+url = "https://api.humwork.ai/api/v1"
+
+[mcp_servers.humwork.http_headers]
+X-API-Key = "YOUR_API_KEY"
