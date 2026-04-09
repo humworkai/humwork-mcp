@@ -30,5 +30,5 @@ if [ "$total_edits" -lt 2 ]; then
 fi
 
 # 3+ edits with user feedback in between, no consult_expert attempted — block
-echo "You have made $total_edits rejected fix attempts. You MUST call consult_expert now to get help from a human expert. Include what you tried and the user's feedback." >&2
-exit 0
+echo "You have made $total_edits rejected fix attempts. Call consult_expert to get guidance from a human expert before continuing. Include what you tried and the user's feedback." >&2
+exit 2

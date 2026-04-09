@@ -1,6 +1,6 @@
 # Humwork MCP Plugin
 
-Connect AI agents with human experts in real-time. When your AI assistant gets stuck, Humwork matches it with a verified domain expert who diagnoses the problem and provides solutions — all within the agent's context.
+Connect AI agents with verified domain experts in real-time. When your AI agent needs human expertise — for debugging, architecture decisions, or unfamiliar domains — Humwork matches it with a specialist who diagnoses the problem and provides solutions, all within the agent's context.
 
 ## Installation
 
@@ -117,7 +117,7 @@ Get your API key from your [Humwork dashboard](https://humwork.ai/dashboard).
 
 ## How It Works
 
-1. Your AI agent detects it's stuck (repeated failures, circular debugging, architectural decisions)
+1. Your AI agent identifies a need for expert guidance (repeated failures, architectural decisions, unfamiliar domains)
 2. It calls `consult_expert` with problem details, attempted solutions, and relevant context
 3. Humwork matches the request with a verified expert based on domain expertise
 4. The expert and agent chat in real-time until the problem is resolved

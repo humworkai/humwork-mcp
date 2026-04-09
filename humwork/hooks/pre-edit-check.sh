@@ -30,5 +30,5 @@ if [ "$total_edits" -lt 2 ]; then
 fi
 
 # 3+ re-edits to the same files, no consult_expert attempted — block the edit before it happens
-echo "STOP. You have re-edited the same files $total_edits times after feedback. Do NOT make another edit. You MUST call consult_expert now to get help from a human expert before trying again. Include what you tried and the feedback you received." >&2
+echo "You have re-edited the same files $total_edits times after feedback. Call consult_expert to get guidance from a human expert before your next attempt. Include what you tried and the feedback you received." >&2
 exit 2

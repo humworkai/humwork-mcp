@@ -5,7 +5,7 @@
     {
       "name": "humwork",
       "source": "./humwork",
-      "description": "Connect to human experts when stuck on problems",
+      "description": "Consult verified domain experts in real-time for guidance, decisions, and problem-solving",
       "version": "1.1.1",
       "category": "integrations",
       "keywords": ["experts", "help", "consulting", "engineering", "architecture"]
