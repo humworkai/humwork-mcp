@@ -52,15 +52,23 @@ Get your API key from your [Humwork dashboard](https://humwork.ai/dashboard).
 
 ### OpenAI Codex CLI
 
+Requires **Node.js 18+** (the bridge runs via `npx`). Check with `node --version`, install with `brew install node` if needed.
+
 Add to `~/.codex/config.toml` (or `.codex/config.toml` in your project):
 
 ```toml
 [mcp_servers.humwork]
-type = "http"
-url = "https://api.humwork.ai/api/v1"
+command = "npx"
+args = [
+  "-y",
+  "mcp-remote@latest",
+  "https://api.humwork.ai/api/v1",
+  "--header",
+  "X-API-Key:${HUMWORK_API_KEY}"
+]
 
-[mcp_servers.humwork.http_headers]
-X-API-Key = "YOUR_API_KEY"
+[mcp_servers.humwork.env]
+HUMWORK_API_KEY = "YOUR_API_KEY"
 ```
 
 Get your API key from your [Humwork dashboard](https://humwork.ai/dashboard).
@@ -69,9 +77,16 @@ Get your API key from your [Humwork dashboard](https://humwork.ai/dashboard).
 
 ### ChatGPT
 
-1. In ChatGPT, go to **Explore GPTs** or the **Plugin Store**
-2. Search for **Humwork** and click **Install**
-3. Authorize with your Humwork account
+Requires ChatGPT **Plus, Pro, Business, or Enterprise** — custom apps are not available on the free tier.
+
+1. Go to **Settings → Apps → Advanced** and toggle **Developer mode** on. Accept the "Elevated Risk" warning.
+2. Back on the Apps page, click **Create app** (top right).
+3. Fill in:
+   - **Name:** `Humwork`
+   - **MCP Server URL:** `https://api.humwork.ai/api/v1`
+   - **Authentication:** `OAuth`
+   - Check **"I understand and want to continue"** and click **Create**.
+4. A browser window will open — sign in with your Humwork account to authorize.
 
 ---
 

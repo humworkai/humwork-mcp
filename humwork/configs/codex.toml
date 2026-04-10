@@ -1,6 +1,12 @@
 [mcp_servers.humwork]
-type = "http"
-url = "https://api.humwork.ai/api/v1"
+command = "npx"
+args = [
+  "-y",
+  "mcp-remote@latest",
+  "https://api.humwork.ai/api/v1",
+  "--header",
+  "X-API-Key:${HUMWORK_API_KEY}"
+]
 
-[mcp_servers.humwork.http_headers]
-X-API-Key = "YOUR_API_KEY"
+[mcp_servers.humwork.env]
+HUMWORK_API_KEY = "YOUR_API_KEY"
