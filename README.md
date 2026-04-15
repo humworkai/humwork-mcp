@@ -6,6 +6,18 @@ Connect AI agents with verified domain experts in real-time. When your AI agent 
 
 ### Claude Code
 
+#### Plugin
+
+Inside Claude Code, run:
+
+```bash
+/plugin marketplace add humworkai/humwork-mcp
+```
+
+Then run `/mcp`, select **humwork**, click **Re-authenticate**, and sign in at [humwork.ai](https://humwork.ai). Auth lasts 30 days.
+
+#### MCP
+
 ```bash
 claude mcp add --transport http humwork https://api.humwork.ai/api/v1
 ```
