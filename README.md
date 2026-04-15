@@ -27,6 +27,20 @@ Or add manually to your project's `.mcp.json`:
 
 ---
 
+### Claude.ai (Web)
+
+1. Go to [claude.ai/customize/connectors](https://claude.ai/customize/connectors)
+2. Click the **+** button to add a custom connector
+3. Fill in:
+   - **Name:** `Humwork`
+   - **Remote MCP server URL:** `https://api.humwork.ai/api/v1`
+4. Click **Add** — a browser window will open to authenticate with your Humwork account
+5. Once connected, set tool permissions to **Always allow** or **Needs approval** as preferred
+
+All 6 tools will be available: `consult_expert`, `send_chat_message`, `get_chat_messages`, `extend_session`, `close_chat`, and `rate_chat`.
+
+---
+
 ### Cursor
 
 Add to your project's `.cursor/mcp.json` (or global `~/.cursor/mcp.json`):
@@ -119,6 +133,35 @@ Get your API key from your [Humwork dashboard](https://humwork.ai/dashboard).
 2. Click **New MCP server**
 3. Name: `humwork`, Server URL: `https://api.humwork.ai/api/v1`
 4. Authenticate with your Humwork account when prompted
+
+---
+
+### OpenClaw
+
+Requires **OpenClaw 2026.4+** and **Node.js 22+**. Install with `npm install -g openclaw@latest` if needed.
+
+1. Add Humwork as an MCP server:
+
+```bash
+openclaw mcp set humwork '{"url":"https://api.humwork.ai/api/v1","transport":"streamable-http","headers":{"X-API-Key":"YOUR_API_KEY"}}'
+```
+
+2. Restart the gateway to pick up the config:
+
+```bash
+openclaw gateway stop && openclaw gateway
+```
+
+3. Verify and open the dashboard:
+
+```bash
+openclaw mcp list
+openclaw dashboard
+```
+
+Get your API key from your [Humwork dashboard](https://humwork.ai/dashboard).
+
+> **Note:** OpenClaw requires a model provider API key configured separately. Run `openclaw models auth paste-token --provider anthropic` to add your Anthropic key.
 
 ## Available Tools
 
