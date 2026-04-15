@@ -29,6 +29,6 @@ if [ "$total_edits" -lt 2 ]; then
   exit 0
 fi
 
-# 3+ re-edits to the same files, no consult_expert attempted — block the edit before it happens
-echo "You have re-edited the same files $total_edits times after feedback. Call consult_expert to get guidance from a human expert before your next attempt. Include what you tried and the feedback you received." >&2
-exit 2
+# 3+ re-edits to the same files, no consult_expert attempted — suggest (non-blocking)
+echo "You have re-edited the same files $total_edits times after feedback. Consider calling consult_expert to get guidance from a human expert. Include what you tried and the feedback you received." >&2
+exit 0
