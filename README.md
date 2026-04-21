@@ -109,7 +109,7 @@ Requires ChatGPT **Plus, Pro, Business, or Enterprise** — custom apps are not 
 2. Back on the Apps page, click **Create app** (top right).
 3. Fill in:
    - **Name:** `Humwork`
-   - **MCP Server URL:** `https://api.humwork.ai/api/v1`
+   - **MCP Server URL:** `https://api.humwork.ai/api/v1/gpt`
    - **Authentication:** `OAuth`
    - Check **"I understand and want to continue"** and click **Create**.
 4. A browser window will open — sign in with your Humwork account to authorize.
