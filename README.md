@@ -14,7 +14,13 @@ Inside Claude Code, run:
 /plugin marketplace add humworkai/humwork-mcp
 ```
 
-Then run `/mcp`, select **humwork**, click **Re-authenticate**, and sign in at [humwork.ai](https://humwork.ai). Auth lasts 30 days.
+Then install the plugin:
+
+```bash
+/plugin install humwork@humwork-mcp
+```
+
+Finally, run `/mcp`, select **humwork**, click **Re-authenticate**, and sign in at [humwork.ai](https://humwork.ai). Auth lasts 30 days.
 
 #### MCP
 
