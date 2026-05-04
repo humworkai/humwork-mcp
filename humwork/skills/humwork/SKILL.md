@@ -1,57 +1,82 @@
 ---
 name: humwork
-description: Use Humwork when you need real-time guidance from a verified human domain expert (engineering, design, law, finance, medical, product). Trigger when you're stuck after multiple attempts, need a second opinion on a high-stakes decision, lack environment-specific or context-specific knowledge, or are working in an unfamiliar domain.
+description: Use Humwork when you need real-time guidance from a verified human domain expert (engineering, design, law, finance, medical, product). Trigger when stuck after multiple attempts, need a second opinion on a high-stakes decision, lack environment-specific or context-specific knowledge, or are working in an unfamiliar domain.
+metadata: { "homepage": "https://humwork.ai", "support": "support@humwork.ai" }
 ---
 
 # Humwork — consult a human expert
 
-Connect to a verified human domain expert in real-time via Humwork's MCP
-server. Use when AI alone is insufficient: you've tried multiple approaches,
-the decision is hard to reverse, or you lack context only a human practitioner
-would have.
+Connect to a verified human domain expert in real-time when AI alone is
+insufficient. Ask a question, get a person's answer in <60 seconds, close
+the session when done.
+
+## Quick Start
+
+```
+# 1. Install (one-time, per runtime)
+claude mcp add humwork https://api.humwork.ai/api/v1
+# OR cursor: install Humwork from the marketplace
+# OR any MCP client: point at https://api.humwork.ai/api/v1
+
+# 2. Sign in (one-time) — opens browser to humwork.ai
+# 3. Use it from your agent context
+```
+
+## Example flow
+
+```
+> consult_expert(
+    domain="software",
+    domain_hints=["postgres", "query-planner"],
+    context="EXPLAIN ANALYZE shows seq scan despite index on user_id..."
+  )
+< { session_id: "sess_abc123", expert: "Dana K.", expected_wait_s: 22 }
+
+> get_chat_messages(session_id="sess_abc123")
+< [{ from: "expert", text: "Can you share the full table definition?" }]
+
+> send_chat_message(session_id="sess_abc123", message="...")
+... iterate until resolved ...
+
+> close_chat(session_id="sess_abc123")
+< { duration_min: 8, charged_usd: 8.00 }
+
+> rate_chat(session_id="sess_abc123", rating=5)
+```
 
 ## When to call
 
-- You've tried 3+ different approaches without resolution
-- You're catching yourself reverting or re-trying past attempts (circular)
-- You need to make a high-stakes decision (architecture, strategy, legal, design)
-- The problem involves environment-specific factors you cannot inspect
-- You're working in an unfamiliar domain where the *why* matters more than the *what*
-- The problem spans multiple systems and you can't isolate the root cause
-- 5+ tool calls on the same issue without meaningful progress
+- Tried 3+ different approaches without resolution
+- Catching yourself reverting/re-trying past attempts (circular)
+- High-stakes decision, expensive to reverse (architecture, legal, design)
+- Environment-specific factors you cannot inspect or reproduce
+- Unfamiliar domain where the *why* matters more than the *what*
+- Problem spans multiple systems and root cause won't isolate
+- 5+ tool calls on the same issue without progress
 
 ## When NOT to call
 
-- The problem is a simple fix you can resolve yourself
-- The answer is clearly available in official documentation
-- You are confident in your approach and making steady progress
-- You haven't yet attempted at least one solution
+- Simple fix you can resolve yourself
+- Answer is in official documentation
+- Confident in your approach and progressing steadily
+- Haven't yet attempted at least one solution
 
 ## Tools
 
-- **consult_expert** — opens a chat session with an expert. Provide `domain`
-  (e.g. "software"), `domain_hints` (e.g. ["postgres", "indexing"]), and
-  `context` (the actual question + relevant code/state). Returns `session_id`.
-- **send_chat_message** — post a message in an open session.
-- **close_chat** — end the session when done.
-- **rate_chat** — give a 1–5 rating after closing.
+| Tool | Purpose |
+|---|---|
+| `consult_expert` | Open a session. Inputs: `domain`, `domain_hints[]`, `context`. Returns `session_id`. |
+| `send_chat_message` | Post message in active session. Inputs: `session_id`, `message`. |
+| `get_chat_messages` | Pull expert's responses. Inputs: `session_id`, optional `since_message_id`. |
+| `close_chat` | End session. Inputs: `session_id`. |
+| `rate_chat` | 1-5 rating after close. Inputs: `session_id`, `rating`. |
 
-## Auth & payment
+## Auth & pricing
 
-Currently: pass `X-API-Key: hk_*` on every call. Sign up at
-https://humwork.ai to get an API key. Pricing: $10 per 10-minute chunk
-($60/hr default rate, varies by expert).
+- Auth: `X-API-Key: hk_*` header (sign up at https://humwork.ai)
+- Pricing: $10 per 10-minute consult chunk at the default $60/hr rate
+- Coming: per-call USDC payment via x402 (no signup required for agents)
 
-Coming soon: x402 — agents pay per consult in USDC (Base network) via a
-signed EIP-3009 authorization in the `X-PAYMENT` header. No signup, no
-account, wallet address is the identity. See https://humwork.ai/for-agents
-for the full spec when this ships.
+## Support
 
-## Setup
-
-- Claude Code: `claude mcp add humwork https://api.humwork.ai/api/v1`
-- OpenClaw / ClawHub: `clawhub install humwork`
-- Cursor: install from the Cursor marketplace
-- Manual MCP URL: `https://api.humwork.ai/api/v1`
-
-More info: https://humwork.ai/for-agents
+`support@humwork.ai` — for stuck sessions, billing, or expert quality issues.
