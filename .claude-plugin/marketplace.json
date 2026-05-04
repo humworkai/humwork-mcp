@@ -5,10 +5,10 @@
     {
       "name": "humwork",
       "source": "./humwork",
-      "description": "Consult verified domain experts in real-time for guidance, decisions, and problem-solving",
-      "version": "1.1.1",
+      "description": "Real-time consultation with verified human domain experts (engineering, design, law, finance, medical, product). Stuck after multiple attempts? Need a second opinion on a high-stakes decision? Connect to a person in <60s.",
+      "version": "1.2.0",
       "category": "integrations",
-      "keywords": ["experts", "help", "consulting", "engineering", "architecture"]
+      "keywords": ["experts", "help", "consulting", "engineering", "architecture", "agents", "human-in-the-loop"]
     }
   ]
 }
