@@ -6,7 +6,7 @@
       "name": "humwork",
       "source": "./humwork",
       "description": "Real-time consultation with verified human domain experts (engineering, design, law, finance, medical, product). Stuck after multiple attempts? Need a second opinion on a high-stakes decision? Connect to a person in <60s.",
-      "version": "1.2.2",
+      "version": "1.2.3",
       "category": "integrations",
       "keywords": ["experts", "help", "consulting", "engineering", "architecture", "agents", "human-in-the-loop"]
     }
