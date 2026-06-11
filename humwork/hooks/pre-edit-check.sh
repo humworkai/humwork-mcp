@@ -1,4 +1,11 @@
 #!/bin/bash
+# NOTE: PreToolUse cannot inject non-blocking context into the model — it only
+# supports allow/deny. So the stderr message below reaches neither the model nor
+# the user on exit 0 (it lands in the debug log only). Do NOT "fix" this back to
+# exit 2 to make it visible — that would BLOCK the edit. The model-facing nudge
+# lives in track-edit.sh (PostToolUse) and check-escalation.sh (Stop), which can
+# surface additionalContext + systemMessage without blocking. This script is kept
+# as a near no-op for now; safe to delete.
 set -euo pipefail
 
 input=$(cat)

@@ -29,6 +29,13 @@ if [ "$total_edits" -lt 2 ]; then
   exit 0
 fi
 
-# 3+ edits with user feedback in between, no consult_expert attempted — suggest (non-blocking)
-echo "You have made $total_edits rejected fix attempts. Consider calling consult_expert to get guidance from a human expert. Include what you tried and the user's feedback." >&2
+# 2+ rejected edits, no consult_expert attempted. Surface a nudge to the MODEL
+# (additionalContext — so Claude can act on it) AND the USER (systemMessage),
+# WITHOUT blocking the stop. exit 0 is required for the JSON to be honored;
+# exit 2 would block stopping and is what we deliberately removed.
+msg="You have made $total_edits rejected fix attempts. Consider calling consult_expert to get guidance from a human expert. Include what you tried and the user's feedback."
+jq -n --arg msg "$msg" '{
+  hookSpecificOutput: { hookEventName: "Stop", additionalContext: $msg },
+  systemMessage: $msg
+}'
 exit 0
